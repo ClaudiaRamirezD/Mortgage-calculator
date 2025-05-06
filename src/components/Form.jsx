@@ -1,7 +1,7 @@
 import { SvgIconCalculator } from './IconCalculator.jsx';
 
 const Form = ({ formData, handleChange, handleSubmit }) => {
-    console.log('Form loaded. handleSubmit is:', handleSubmit);
+    
     return (
         <form onSubmit={handleSubmit} className='pt-7 flex flex-col gap-4'>
             <div className='flex flex-col gap-2'>
@@ -42,7 +42,7 @@ const Form = ({ formData, handleChange, handleSubmit }) => {
                             WebkitAppearance: 'none', // Safari
                             }}
                         />
-                        <span className='bg-[var(--slate-100)] h-full flex items-center font-bold justify-center px-2'>years</span>
+                        <span className='form-sign years'>years</span>
                     </div>
                 </div>
 

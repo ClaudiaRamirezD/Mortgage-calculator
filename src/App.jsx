@@ -92,8 +92,7 @@ function App() {
     <main>
       <div className="container text-base font-plus text-[var(--slate-700)] flex flex-col">
         <div className="form bg-white py-7 px-6 flex flex-col">
-          <Header />
-          console.log('App loaded'); 
+          <Header setFormData={setFormData} setResults={setResults} />
           <Form
             formData={formData}
             handleChange={handleChange}

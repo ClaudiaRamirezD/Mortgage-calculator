@@ -24,7 +24,6 @@ label:has(input[type="radio"]:checked) {
 }
 
 
-
 /* Quitar flechas de inputs type="number" */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -44,8 +43,25 @@ label, legend {
     @apply bg-[var(--slate-100)] h-full w-9 flex items-center font-bold justify-center;
 }
 
+.years {
+    @apply w-16;
+}
+
 .form-input-between{
-    @apply  border border-[var(--slate-700)] rounded-sm h-9 flex items-center justify-between overflow-hidden focus-within:border-2 focus-within:shadow-2xl;
+    @apply  border border-[var(--slate-700)] rounded-sm h-9 flex items-center justify-between overflow-hidden focus-within:border-1 focus-within:shadow-2xl;
+}
+
+.form-input:focus-within,
+.form-input-between:focus-within {
+    border-color: var(--lime);
+    background-color: hsl(61, 70%, 90%);
+}
+
+.form-input:focus-within .form-sign,
+.form-input-between:focus-within .form-sign {
+    background-color: var(--lime); 
+    color: var(--slate-900)
+    
 }
 
 fieldset label {
