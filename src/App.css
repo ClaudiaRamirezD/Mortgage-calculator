@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+    --font-plus: 'Plus Jakarta Sans', sans-serif;
+    --white: hsl(0, 0%, 100%);
+    --slate-100: hsl(202, 86%, 94%);
+    --slate-300: hsl(203, 41%, 72%);
+    --slate-500: hsl(200, 26%, 54%);
+    --slate-700: hsl(200, 24%, 40%);
+    --slate-900: hsl(202, 55%, 16%);
+    --slate-dark: hsl(202, 55%, 10%);
+    --lime: hsl(61, 70%, 52%);
+    --red: hsl(4, 69%, 50%);
+}
+
+input::placeholder {
+    color: var(--slate-700); 
+    font-style: italic; 
+}
+
+label:has(input[type="radio"]:checked) {
+    background-color: hsl(61, 70%, 90%);
+    border-color: var(--lime);
+}
+
+
+
+/* Quitar flechas de inputs type="number" */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+label, legend {
+    @apply font-semibold; 
+}
+
+.form-input {
+    @apply border border-[var(--slate-700)] rounded-sm h-9 flex items-center overflow-hidden focus-within:border-2 focus-within:shadow-2xl;
+}
+
+.form-sign {
+    @apply bg-[var(--slate-100)] h-full w-9 flex items-center font-bold justify-center;
+}
+
+.form-input-between{
+    @apply  border border-[var(--slate-700)] rounded-sm h-9 flex items-center justify-between overflow-hidden focus-within:border-2 focus-within:shadow-2xl;
+}
+
+fieldset label {
+    @apply flex items-center gap-2 p-2 border rounded-sm cursor-pointer hover:border-[var(--lime)]  checked:border-[var(--lime)];
+}
