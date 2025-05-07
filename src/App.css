@@ -18,6 +18,22 @@ input::placeholder {
     font-style: italic; 
 }
 
+input {
+    background-color: transparent !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    background-color: transparent !important;
+    color: inherit !important;
+    transition: background-color 9999s ease-out, color 9999s ease-out;
+}
+
+
 label:has(input[type="radio"]:checked) {
     background-color: hsl(61, 70%, 90%);
     border-color: var(--lime);
@@ -35,8 +51,12 @@ label, legend {
     @apply font-semibold; 
 }
 
+input {
+    @apply bg-transparent;
+}
+
 .form-input {
-    @apply border border-[var(--slate-700)] rounded-sm h-9 flex items-center overflow-hidden focus-within:border-2 focus-within:shadow-2xl;
+    @apply border border-[var(--slate-700)] rounded-sm h-9 flex items-center overflow-hidden focus-within:border-1 focus-within:shadow-2xl;
 }
 
 .form-sign {
@@ -64,6 +84,23 @@ label, legend {
     
 }
 
+.form-input.error,
+.form-input-between.error {
+    border-color: var(--red);
+    background-color: transparent;
+    color: white;
+}
+
+.form-input.error .form-sign,
+.form-input-between.error .form-sign {
+    background-color: var(--red);
+    color: white;
+}
+
 fieldset label {
     @apply flex items-center gap-2 p-2 border rounded-sm cursor-pointer hover:border-[var(--lime)]  checked:border-[var(--lime)];
+}
+
+small {
+    @apply text-[var(--red)] font-semibold;
 }

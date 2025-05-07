@@ -1,70 +1,87 @@
 import { SvgIconCalculator } from './IconCalculator.jsx';
 
-const Form = ({ formData, handleChange, handleSubmit }) => {
-    
+const Form = ({ formData, handleChange, handleSubmit, errors }) => {
     return (
-        <form onSubmit={handleSubmit} className='pt-7 flex flex-col gap-4'>
-            <div className='flex flex-col gap-2'>
+        <form onSubmit={handleSubmit} className="pt-7 flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
                 <label>Mortgage Amount</label>
-                <div className='form-input '>
-                    <span className='form-sign'>$</span>
+                <div
+                    className={`form-input ${errors.amount ? 'error' : ''}`}
+                >
+                    <span className="form-sign">$</span>
                     <input
                         type="text"
                         name="amount"
                         value={formData.amount}
                         onChange={handleChange}
-                        required
-                        placeholder=''
-                        className='text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer'
+                        placeholder=""
+                        className="text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer"
                         style={{
-                        MozAppearance: 'textfield', // Firefox
-                        WebkitAppearance: 'none', // Safari
+                            MozAppearance: "textfield", // Firefox
+                            WebkitAppearance: "none", // Safari
                         }}
                         inputMode="numeric"
                     />
                 </div>
+                <small
+                    className={`text-[var(--red)] font-semibold ${errors.amount ? 'block' : 'hidden'}`}
+                >
+                    This field is required
+                </small>
             </div>
 
-            <div className='flex flex-col gap-4'>
-                <div className='flex flex-col gap-2'>
+            <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2">
                     <label>Mortgage Term</label>
-                    <div className='form-input-between'>
+                    <div
+                    className={`form-input-between ${errors.term ? 'error' : ''}`}
+                    >
                         <input
                             type="number"
                             name="term"
                             value={formData.term}
                             onChange={handleChange}
-                            required
                             placeholder=""
-                            className='text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer'
+                            className="text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer"
                             style={{
-                            MozAppearance: 'textfield', // Firefox
-                            WebkitAppearance: 'none', // Safari
+                                MozAppearance: "textfield", // Firefox
+                                WebkitAppearance: "none", // Safari
                             }}
                         />
-                        <span className='form-sign years'>years</span>
+                        <span className="form-sign years">years</span>
                     </div>
+                    <small
+                        className={`text-[var(--red)] font-semibold ${errors.term ? 'block' : 'hidden'}`}
+                    >
+                        This field is required
+                    </small>
                 </div>
 
-                <div className='flex flex-col gap-2'>
+                <div className="flex flex-col gap-2">
                     <label>Interest Rate</label>
-                    <div className='form-input-between'>
+                    <div
+                    className={`form-input-between ${errors.rate ? 'error' : ''}`}
+                    >
                         <input
                             type="number"
                             name="rate"
                             value={formData.rate}
                             onChange={handleChange}
-                            required
                             placeholder=""
                             step="0.01"
-                            className='text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer'
+                            className="text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer"
                             style={{
-                            MozAppearance: 'textfield', // Firefox
-                            WebkitAppearance: 'none', // Safari
+                                MozAppearance: "textfield", // Firefox
+                                WebkitAppearance: "none", // Safari
                             }}
                         />
-                        <span className='form-sign'>%</span>
+                        <span className="form-sign">%</span>
                     </div>
+                    <small
+                        className={`text-[var(--red)] font-semibold ${errors.rate ? 'block' : 'hidden'}`}
+                    >
+                        This field is required
+                    </small>
                 </div>
             </div>
 
@@ -109,10 +126,16 @@ const Form = ({ formData, handleChange, handleSubmit }) => {
                     <span className='text-[var(--slate-900)]'>Interest Only</span>
                 </label>
             </fieldset>
+            <small
+                        className={`text-[var(--red)] font-semibold ${errors.type ? 'block' : 'hidden'}`}
+                    >
+                        This field is required
+            </small>
 
-
-
-            <button type="submit" className='flex justify-center items-center gap-2 bg-[var(--lime)] text-[var(--slate-900)] font-bold py-2 rounded-full hover:bg-[hsl(61,70%,75%)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer'>
+            <button
+                type="submit"
+                className="flex justify-center items-center gap-2 bg-[var(--lime)] text-[var(--slate-900)] font-bold py-2 rounded-full hover:bg-[hsl(61,70%,75%)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            >
                 <SvgIconCalculator className="w-6 h-6" />
                 <p>Calculate Repayments</p>
             </button>

@@ -29,64 +29,79 @@ function App() {
 
       setFormData((prev) => {
         const updated = { ...prev, [name]: formattedValue };
-        console.log('Updated form data:', updated);
+        
         return updated;
       });
     } else {
       setFormData((prev) => {
         const updated = { ...prev, [name]: value };
-        console.log('Updated form data:', updated);
         return updated;
       });
       }
   };
 
+  const [errors, setErrors] = useState({
+  amount: false,
+  term: false,
+  rate: false,
+  type: false,
+  });
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    console.log('Submitted data:', formData);
 
-    const { amount, term, rate } = formData;
+    const { amount, term, rate, types } = formData; // Corrected: Changed 'type' to 'types'
+
+    const newErrors = {
+      amount: !formData.amount.trim() || isNaN(parseFloat(formData.amount.replace(/,/g, ''))),
+      term: !formData.term.trim() || isNaN(parseFloat(formData.term)),
+      rate: !formData.rate.trim() || isNaN(parseFloat(formData.rate)),
+      type: !formData.types.trim(), // Validate that a type is selected
+    };
+
+    setErrors(newErrors);
+
+    if (Object.values(newErrors).some((error) => error)) {
+      console.log("Error: Missing required fields", newErrors);
+      return;
+    }
+
     // Remove commas from amount for calculation
     const rawAmount = parseFloat(amount.replace(/,/g, ''));
     const rawRate = parseFloat(rate);
     const rawTerm = parseFloat(term);
+
     console.log('Raw parsed values:', { rawAmount, rawTerm, rawRate });
 
-    if (rawAmount && rawTerm && rawRate) {
+    if (isNaN(rawAmount) || isNaN(rawRate) || isNaN(rawTerm)) {
+      console.log("Error: Invalid values", { rawAmount, rawRate, rawTerm });
+      return;
+    }
+
+    // Calculate results based on the selected type
+    if (types === "Repayment") {
       const monthlyRate = rawRate / 100 / 12;
       const numberOfPayments = rawTerm * 12;
 
       const monthlyRepayment = (rawAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
       const totalRepayment = monthlyRepayment * numberOfPayments;
 
-      if (isNaN(rawAmount) || isNaN(rawRate) || isNaN(rawTerm)) {
-      console.log("Error: Invalid values", { rawAmount, rawRate, rawTerm });
-      return;
-      }
-
-      // setResults({
-      // monthlyRepayment: monthlyRepayment.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-      // totalRepayment: totalRepayment.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-      // });
+      setResults({
+        monthlyRepayment: monthlyRepayment,
+        totalRepayment: totalRepayment,
+      });
+    } else if (types === "Interest Only") {
+      const monthlyRepayment = (rawAmount * (rawRate / 100)) / 12;
+      const totalRepayment = monthlyRepayment * rawTerm * 12;
 
       setResults({
-      monthlyRepayment: monthlyRepayment,
-      totalRepayment: totalRepayment,
-  });
-
-
-
-      console.log('Monthly Repayment:', monthlyRepayment);
-      console.log('Total Repayment:', totalRepayment);
-
-
+        monthlyRepayment: monthlyRepayment,
+        totalRepayment: totalRepayment,
+      });
     }
   };
   
-  const isFormFilled = formData.amount && formData.term && formData.rate;
 
   return (
     <main>
@@ -97,6 +112,7 @@ function App() {
             formData={formData}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            errors={errors}
           />
         </div>
 
