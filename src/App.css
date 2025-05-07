@@ -18,9 +18,6 @@ input::placeholder {
     font-style: italic; 
 }
 
-input {
-    background-color: transparent !important;
-}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -51,10 +48,6 @@ label, legend {
     @apply font-semibold; 
 }
 
-input {
-    @apply bg-transparent;
-}
-
 .form-input {
     @apply border border-[var(--slate-700)] rounded-sm h-9 flex items-center overflow-hidden focus-within:border-1 focus-within:shadow-2xl;
 }
@@ -71,36 +64,44 @@ input {
     @apply  border border-[var(--slate-700)] rounded-sm h-9 flex items-center justify-between overflow-hidden focus-within:border-1 focus-within:shadow-2xl;
 }
 
+/* Focus-within styles */
 .form-input:focus-within,
 .form-input-between:focus-within {
-    border-color: var(--lime);
-    background-color: hsl(61, 70%, 90%);
+    @apply border-[var(--lime)] bg-[hsl(61,70%,90%)];
 }
 
+/* Hover styles */
+.form-input:hover,
+.form-input-between:hover {
+    @apply border-2;
+}
+
+/* Focus-within styles for .form-sign */
 .form-input:focus-within .form-sign,
 .form-input-between:focus-within .form-sign {
-    background-color: var(--lime); 
-    color: var(--slate-900)
-    
+    @apply bg-[var(--lime)] text-[var(--slate-900)];
 }
 
+/* Error styles */
 .form-input.error,
 .form-input-between.error {
-    border-color: var(--red);
-    background-color: transparent;
-    color: white;
+    @apply border-[var(--red)] bg-transparent text-white;
 }
 
+/* Error styles for .form-sign */
 .form-input.error .form-sign,
 .form-input-between.error .form-sign {
-    background-color: var(--red);
-    color: white;
+    @apply bg-[var(--red)] text-white;
 }
 
 fieldset label {
-    @apply flex items-center gap-2 p-2 border rounded-sm cursor-pointer hover:border-[var(--lime)]  checked:border-[var(--lime)];
+    @apply flex items-center gap-2 p-2 border-1 rounded-sm cursor-pointer hover:border-[var(--lime)]  checked:border-[var(--lime)] hover:border-2 ;
 }
 
 small {
     @apply text-[var(--red)] font-semibold;
+}
+
+input:focus + span {
+    @apply border-[var(--lime)] shadow-2xl;
 }
