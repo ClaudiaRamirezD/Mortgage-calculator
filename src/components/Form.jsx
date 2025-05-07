@@ -134,7 +134,7 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
 
             <button
                 type="submit"
-                className="flex justify-center items-center gap-2 bg-[var(--lime)] text-[var(--slate-900)] font-bold py-2 rounded-full hover:bg-[hsl(61,70%,75%)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer md:mt-4 md:w-2/3"
+                className="flex justify-center items-center gap-2 bg-[var(--lime)] text-[var(--slate-900)] font-bold py-2 rounded-full hover:bg-[hsl(61,70%,75%)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer md:mt-4 lg:w-2/3"
             >
                 <SvgIconCalculator className="w-6 h-6" />
                 <p>Calculate Repayments</p>
