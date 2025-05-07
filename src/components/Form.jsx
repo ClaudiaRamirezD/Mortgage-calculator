@@ -30,11 +30,11 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
                 </small>
             </div>
 
-            <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-4 md:flex-row">
+                <div className="flex flex-col gap-2 md:w-1/">
                     <label>Mortgage Term</label>
                     <div
-                    className={`form-input-between ${errors.term ? 'error' : ''}`}
+                    className={`form-input-between ${errors.term ? 'error' : ''} md:w-full`}
                     >
                         <input
                             type="number"
@@ -42,7 +42,7 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
                             value={formData.term}
                             onChange={handleChange}
                             placeholder=""
-                            className="text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer"
+                            className="text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer w-full"
                             style={{
                                 MozAppearance: "textfield", // Firefox
                                 WebkitAppearance: "none", // Safari
@@ -57,10 +57,10 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
                     </small>
                 </div>
 
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 md:w-1/">
                     <label>Interest Rate</label>
                     <div
-                    className={`form-input-between ${errors.rate ? 'error' : ''}`}
+                    className={`form-input-between ${errors.rate ? 'error' : ''} md:w-full`}
                     >
                         <input
                             type="number"
@@ -69,7 +69,7 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
                             onChange={handleChange}
                             placeholder=""
                             step="0.01"
-                            className="text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer"
+                            className="text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer w-full"
                             style={{
                                 MozAppearance: "textfield", // Firefox
                                 WebkitAppearance: "none", // Safari
@@ -134,7 +134,7 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
 
             <button
                 type="submit"
-                className="flex justify-center items-center gap-2 bg-[var(--lime)] text-[var(--slate-900)] font-bold py-2 rounded-full hover:bg-[hsl(61,70%,75%)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="flex justify-center items-center gap-2 bg-[var(--lime)] text-[var(--slate-900)] font-bold py-2 rounded-full hover:bg-[hsl(61,70%,75%)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer md:mt-4 md:w-2/3"
             >
                 <SvgIconCalculator className="w-6 h-6" />
                 <p>Calculate Repayments</p>

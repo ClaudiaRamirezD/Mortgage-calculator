@@ -104,9 +104,9 @@ function App() {
   
 
   return (
-    <main>
-      <div className="container text-base font-plus text-[var(--slate-700)] flex flex-col">
-        <div className="form bg-white py-7 px-6 flex flex-col">
+    <main className='bg-[var(--slate-100)] md:min-h-screen flex flex-col items-center justify-center'>
+      <div className="container text-base font-plus text-[var(--slate-700)] flex flex-col md:flex-row md:max-w-3/4   md:h-full md:rounded-2xl md:border-transparent md:overflow-hidden">
+        <div className="form bg-white py-7 px-6 md:p-9 flex flex-col flex-1 basis-0 md:w-1/2">
           <Header setFormData={setFormData} setResults={setResults} />
           <Form
             formData={formData}
@@ -116,11 +116,14 @@ function App() {
           />
         </div>
 
-        <div className="results py-7 px-6 bg-[var(--slate-900)] flex flex-col gap-4">
-          <Results results={results} />
+        <div className='bg-white flex-1 basis-0 flex flex-col md:w-1/2'>
+          <div className="results py-7 px-6 bg-[var(--slate-900)] flex flex-col items-center justify-center flex-1 md:rounded-bl-[5rem]">
+            <Results results={results} />
+          </div>
         </div>
       </div>
     </main>
+
   );
 }
 

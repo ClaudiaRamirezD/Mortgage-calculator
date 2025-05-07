@@ -60,7 +60,7 @@ input {
 }
 
 .form-sign {
-    @apply bg-[var(--slate-100)] h-full w-9 flex items-center font-bold justify-center;
+    @apply bg-[var(--slate-100)] h-full w-9 flex items-center font-bold justify-center md:w-14;
 }
 
 .years {
