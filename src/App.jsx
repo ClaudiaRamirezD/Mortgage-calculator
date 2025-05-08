@@ -1,10 +1,10 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, } from 'react';
 import Form from './components/Form.jsx';
 import Header from './components/Header.jsx';
 import ResultsEmpty from './components/ResultsEmpty.jsx';
+import ResultsFilled from './components/ResultsFilled.jsx';
 import './App.css';
 
-const ResultsFilled = React.lazy(() => import('./components/ResultsFilled.jsx'));
 
 
 
@@ -122,9 +122,10 @@ function App() {
         <div className='bg-white flex-1 basis-0 flex flex-col md:w-1/2'>
           <div className="results py-7 px-6 bg-[var(--slate-900)] flex flex-col items-center justify-center flex-1 md:rounded-bl-[5rem]">
             {results.monthlyRepayment > 0 ? (
-              <Suspense fallback={<div>Loading results...</div>}>
-                <ResultsFilled results={results} />
-              </Suspense>
+              <ResultsFilled
+                monthlyRepayment={results.monthlyRepayment}
+                totalRepayment={results.totalRepayment}
+              />
             ) : (
               <ResultsEmpty />
             )}
