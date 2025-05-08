@@ -13,4 +13,10 @@ export default defineConfig({
       }),
       tailwindcss()
     ],
+  build: {
+    sourcemap: true,
+    target: 'esnext',
+    minify: 'terser',
+    polyfillDynamicImport: false,
+  },
 })
