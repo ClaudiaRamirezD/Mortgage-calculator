@@ -11,6 +11,7 @@ export default defineConfig({
       svgr({
       exportAsDefault: true, 
       }),
-      tailwindcss()
+      tailwindcss(),
+      visualizer()
     ],
 })
