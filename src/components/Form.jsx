@@ -74,6 +74,8 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
                         onChange={handleChange}
                         placeholder=""
                         step="0.01"
+                        min="0"
+                        max="100"
                         className="text-[var(--slate-900)] font-bold focus:outline-none px-2 cursor-pointer w-full"
                         style={{
                             MozAppearance: "textfield", // Firefox
@@ -96,7 +98,9 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
                 <legend id="mortgage-type" className="pb-2">Mortgage Type</legend>
 
                 {/* Repayment */}
-                <label htmlFor="repayment" className="flex items-center gap-2 cursor-pointer p-2 rounded-md border border-slate-900 transition-colors peer-checked:bg-[hsl(61,70%,75%)] peer-checked:border-[var(--lime)]">
+                <label 
+                    htmlFor="repayment" 
+                    className="flex items-center gap-2 cursor-pointer p-2 rounded-md border-2 border-slate-900 box-border transition-colors peer-checked:bg-[hsl(61,70%,75%)] peer-checked:border-[var(--lime)] hover:bg-[hsl(61,70%,90%)] hover:border-[var(--lime)]">
                     <input
                         id="repayment"
                         type="radio"
@@ -118,7 +122,9 @@ const Form = ({ formData, handleChange, handleSubmit, errors }) => {
                 </label>
 
                 {/* Interest Only */}
-                <label htmlFor="interest-only" className="flex items-center gap-2 cursor-pointer p-2 rounded-md border border-slate-900 transition-colors peer-checked:bg-[hsl(61,70%,75%)] peer-checked:border-[var(--lime)]">
+                <label 
+                    htmlFor="interest-only" 
+                    className="flex items-center gap-2 cursor-pointer p-2 rounded-md border-2 border-slate-900 box-border transition-colors peer-checked:bg-[hsl(61,70%,75%)] peer-checked:border-[var(--lime)] hover:bg-[hsl(61,70%,90%)] hover:border-[var(--lime)]">
                     <input
                         id="interest-only"
                         type="radio"
